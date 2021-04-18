@@ -1,19 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap');
+
 .App {
-  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
-body {
-  font-family: 'namusquare', sans-serif;
-}
-
-.black_nav {
+.nav {
   display: flex;
   width: 100%;
-  padding: 20px;
+  padding: 25px;
   color: #fff;
   background: #000;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 35px;
+  font-weight: 800;
 }
 
 .list{
@@ -24,12 +22,29 @@ body {
 
 .list span {
   font-size: 20px;
-  padding-left: 20px;
   cursor: pointer;
 }
 
 .list span:active {
   transform: rotateX(10deg);
+}
+
+.upgrade, .view  {
+  margin: 10px 12px 0;
+  width: 90px;
+  height: 40px;
+  color: #fff;
+  background-color: #177b97;
+  border: 0;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+.view {
+  width: 150px;
 }
 
 .modal {
