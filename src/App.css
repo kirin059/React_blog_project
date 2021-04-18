@@ -2,10 +2,42 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'namusquare', sans-serif;
 }
+
+.black_nav {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+  background: #000;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.list{
+  margin-top: 30px;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.list span {
+  font-size: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.list span:active {
+  transform: rotateX(10deg);
+}
+
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
