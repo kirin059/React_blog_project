@@ -56,20 +56,33 @@ function App() {
       {/* if문을 쓰고 싶으면 '삼항연산자'를 써야한다(중괄호로 전체를 감싸줘야 한다) */}
       {
         modal === true
-          ? <Modal />
+          ? <Modal title={title} />
           : null
       }
 
+      {/* 반복문을 쓰고 싶으면 return 내에서는 'map'을 써야한다(중괄호로 전체를 감싸줘야 한다) */}
+      {/* {
+        title.map((el) => {
+          return (
+            <div className="list">
+              <h3> {el} </h3>
+              <p> 4월 14일 발행</p>
+              <span onClick={() => { likeChange(like + 1) }}>👍</span> <span> {like} </span>
+              <hr />
+            </div>
+          )
+        })
+      } */}
 
     </div>
   );
 }
 
 
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
-      <h2>제목</h2>
+      <h2> {props.title[0]} </h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
