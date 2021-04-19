@@ -10,7 +10,7 @@ function App() {
   let [like, likeChange] = useState(0)
   let [modal, modalChange] = useState(false)
   let [num, numChange] = useState(0)
-  let [input, inputChange] = useState('')
+  let [input, inputChange] = useState('')  // input value를 저장할 저장공간 지정(초기값: 빈문자열)
 
   // state의 내용을 변경하고 싶을 때, onClick에 실행할 새로운 함수를 만들어준다(=handleTitleChange)
   function handleTitleChange() {
@@ -26,6 +26,7 @@ function App() {
     titleChange(newTitle)
   }
 
+
   return (
     <div className="App">
       <div className="nav">
@@ -34,9 +35,10 @@ function App() {
 
       <button className="upgrade" onClick={handleTitleChange}>Upgrade</button>
 
+
       {/* 반복문을 쓰고 싶으면 return 내에서는 'map'을 써야한다(중괄호로 전체를 감싸줘야 한다) 
-          반복문 쓸때는 꼭 key={i}를 써주기
-      */}
+          반복문 쓸때는 꼭 key={i}를 써주기*/}
+
       {
         title.map((el, i) => {
           return (
@@ -55,6 +57,7 @@ function App() {
 
 
       {/* if문을 쓰고 싶으면 '삼항연산자'를 써야한다(중괄호로 전체를 감싸줘야 한다) */}
+
       {
         modal === true
           ? <Modal title={title} num={num} />
@@ -63,13 +66,19 @@ function App() {
 
       <div className="publish">
 
-        {/* <input onChange={(e) => { console.log(e.target.value) }} /> */}
+        {/* <input onChange={(e) => { console.log(e.target.value) }} />  >> input안의 값을 확인하고 싶을 때 
+            input에 저장한 내용(=state)이 inputChange함수 안에 저장된다*/}
         <input onChange={(e) => { inputChange(e.target.value) }} />
 
-        {/* <button onClick={ } >Upload</button> */}
+        <button onClick={() => {
+          // state를 수정할 때는, 원본 state를 건들지 말고, 사본을 하나 만들어서 수정하자
+          let titleCopy = [...title]
+          titleCopy.unshift(input)
+          titleChange(titleCopy)
+        }} >Upload</button>
 
       </div>
-    </div>
+    </div >
   );
 }
 
