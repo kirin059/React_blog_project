@@ -9,6 +9,8 @@ function App() {
   let [title, titleChange] = useState(['State 배우기', 'Conponent 배우기', 'Blog 만들기']);
   let [like, likeChange] = useState(0)
   let [modal, modalChange] = useState(false)
+  let [num, numChange] = useState(0)
+  let [input, inputChange] = useState('')
 
   // state의 내용을 변경하고 싶을 때, onClick에 실행할 새로운 함수를 만들어준다(=handleTitleChange)
   function handleTitleChange() {
@@ -32,48 +34,41 @@ function App() {
 
       <button className="upgrade" onClick={handleTitleChange}>Upgrade</button>
 
-      <div className="list">
-        <h3> {title[0]} </h3>
-        <p> 4월 14일 발행</p>
-        <span onClick={() => { likeChange(like + 1) }}>👍</span> <span> {like} </span>
-        <hr />
-      </div>
-
-      <div className="list">
-        <h3> {title[1]} </h3>
-        <p> 4월 14일 발행</p>
-        <hr />
-      </div>
-
-      <div className="list">
-        <h3> {title[2]} </h3>
-        <p> 4월 14일 발행</p>
-        <hr />
-      </div>
-
-      <button className="view" onClick={() => { modalChange(!modal) }}>Contents Views</button>
-
-      {/* if문을 쓰고 싶으면 '삼항연산자'를 써야한다(중괄호로 전체를 감싸줘야 한다) */}
+      {/* 반복문을 쓰고 싶으면 return 내에서는 'map'을 써야한다(중괄호로 전체를 감싸줘야 한다) 
+          반복문 쓸때는 꼭 key={i}를 써주기
+      */}
       {
-        modal === true
-          ? <Modal title={title} />
-          : null
-      }
-
-      {/* 반복문을 쓰고 싶으면 return 내에서는 'map'을 써야한다(중괄호로 전체를 감싸줘야 한다) */}
-      {/* {
-        title.map((el) => {
+        title.map((el, i) => {
           return (
-            <div className="list">
-              <h3> {el} </h3>
+            <div className="list" key={i}>
+              <h3 onClick={() => { numChange(i) }}> {el} </h3>
               <p> 4월 14일 발행</p>
-              <span onClick={() => { likeChange(like + 1) }}>👍</span> <span> {like} </span>
+              <span onClick={() => { likeChange(like + 1) }}>👍</span>
+              <span> {like} </span>
               <hr />
             </div>
           )
         })
-      } */}
+      }
 
+      <button className="view" onClick={() => { modalChange(!modal) }}>Contents Views</button>
+
+
+      {/* if문을 쓰고 싶으면 '삼항연산자'를 써야한다(중괄호로 전체를 감싸줘야 한다) */}
+      {
+        modal === true
+          ? <Modal title={title} num={num} />
+          : null
+      }
+
+      <div className="publish">
+
+        {/* <input onChange={(e) => { console.log(e.target.value) }} /> */}
+        <input onChange={(e) => { inputChange(e.target.value) }} />
+
+        {/* <button onClick={ } >Upload</button> */}
+
+      </div>
     </div>
   );
 }
@@ -82,7 +77,7 @@ function App() {
 function Modal(props) {
   return (
     <div className="modal">
-      <h2> {props.title[0]} </h2>
+      <h2> {props.title[props.num]} </h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
