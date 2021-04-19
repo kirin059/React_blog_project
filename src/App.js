@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 function App() {
   // state(변수 대신 사용하는 데이터 저장공간) 사용 방법
@@ -29,9 +30,24 @@ function App() {
 
   return (
     <div className="App">
-      <div className="nav">
-        <div>🎃 React Blog</div>
-      </div>
+      <Navbar bg="light" expand="lg" className="nav_container">
+        <Navbar.Brand href="#home" className="nav_brand"> 🚀 React-Blog</Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
 
       <button className="upgrade" onClick={handleTitleChange}>Upgrade</button>
 
