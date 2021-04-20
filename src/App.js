@@ -109,8 +109,15 @@ function App() {
         <button onClick={() => {
           // state를 수정할 때는, 원본 state를 건들지 말고, 사본을 하나 만들어서 수정하자
           let titleCopy = [...title]
+          let dateCopy = [...date]
           titleCopy.unshift(input)
+          dateCopy[0] = '2021년 현재'
+          dateCopy[1] = '2021년 4월 18일'
+          dateCopy[2] = '2021년 4월 19일'
+          dateCopy[3] = '2021년 4월 20일'
+
           setTitle(titleCopy)
+          setDate(dateCopy)
         }} >Upload</button>
 
       </div>
