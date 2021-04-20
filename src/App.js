@@ -9,6 +9,7 @@ function App() {
   let [like, setLike] = useState([0, 0, 0]);
   let [modals, setModals] = useState(false)
   let [num, setNum] = useState(0)
+  let [input, inputChange] = useState('')  // input value를 저장할 저장공간 지정(초기값: 빈문자열)
 
 
   function handleTitleChange() {
@@ -98,6 +99,21 @@ function App() {
           : null
       }
 
+
+      <div className="publish">
+
+        {/*  input안의 값을 확인하고 싶을 때 : <input onChange={(e) => { console.log(e.target.value) }} />  
+             input에 저장한 내용(=state)이 inputChange함수 안에 저장된다*/}
+        <input onChange={(e) => { inputChange(e.target.value) }} />
+
+        <button onClick={() => {
+          // state를 수정할 때는, 원본 state를 건들지 말고, 사본을 하나 만들어서 수정하자
+          let titleCopy = [...title]
+          titleCopy.unshift(input)
+          setTitle(titleCopy)
+        }} >Upload</button>
+
+      </div>
 
     </div >
   );
