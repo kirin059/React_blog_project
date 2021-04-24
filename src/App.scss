@@ -46,16 +46,16 @@
     padding: 0 30px;
     text-align: left;
 
-    .list span {
+    span {
       font-size: 20px;
       cursor: pointer;
     }
 
-    .list span:active {
+    span:active {
       transform: rotateX(10deg);
     }
 
-    .list h3 {
+    h3 {
       cursor: pointer;
     }  
   }
@@ -93,7 +93,7 @@
     margin: 30px auto 0;
     padding: 0 30px;
 
-    .publish input {
+    input {
       padding: 10px;
       width: 90%;
       border: 1px solid grey;
@@ -101,7 +101,7 @@
       font-size: 16px;
     }
 
-    .publish button {
+    button {
       padding: 10px;
       margin: 10px;
       color: #fff;
