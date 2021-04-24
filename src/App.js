@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import Modals from './component/Modals';
 import './App.css';
@@ -31,8 +32,8 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="#home">HomeBlog</Nav.Link>
+            <Nav.Link as={Link} to="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0">NeighborBlog</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -43,6 +44,8 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+
+      <div className="list_tap">Blog Contents List</div>
 
       {/* <div className="list">
         <h3> {title[0]} </h3>
@@ -88,10 +91,11 @@ function App() {
         })
       }
 
-      <button className="upgrade" onClick={handleTitleChange}>Contents Upgrade</button>
+      <div className="btn_container">
+        <button className="upgrade" onClick={handleTitleChange}>Contents Upgrade</button>
 
-      <button className="view" onClick={() => { setModals(!modals) }}>Contents Views</button>
-
+        <button className="view" onClick={() => { setModals(!modals) }}>Contents Views</button>
+      </div>
       {/* if문을 쓰고 싶으면 '삼항연산자'를 써야한다(중괄호로 전체를 감싸줘야 한다) */}
       {
         modals === true
@@ -99,12 +103,12 @@ function App() {
           : null
       }
 
-
+      <hr />
       <div className="publish">
 
         {/*  input안의 값을 확인하고 싶을 때 : <input onChange={(e) => { console.log(e.target.value) }} />  
              input에 저장한 내용(=state)이 inputChange함수 안에 저장된다*/}
-        <input onChange={(e) => { inputChange(e.target.value) }} />
+        <input onChange={(e) => { inputChange(e.target.value) }} placeholder="Post your contents..." />
 
         <button onClick={() => {
           // state를 수정할 때는, 원본 state를 건들지 말고, 사본을 하나 만들어서 수정하자
