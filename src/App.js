@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import Modals from './component/Modals';
-import './App.css';
+import './App.scss';
 
 function App() {
   let [title, setTitle] = useState(['React 배우기', 'bootstrap 사용하기', 'Code Review']);
@@ -27,7 +27,6 @@ function App() {
     <div className="App">
       <Navbar bg="light" expand="lg" className="nav_container">
         <Navbar.Brand href="#home" className="nav_brand"> 🚀 React-Blog</Navbar.Brand>
-
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
